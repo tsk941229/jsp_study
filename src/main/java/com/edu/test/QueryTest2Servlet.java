@@ -26,7 +26,8 @@ public class QueryTest2Servlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
 
-        // 요청 body에 있는 데이터만 인코딩 하기 때문에 GET방식에선 안먹힘
+        // 요청 body에 있는 데이터만 인코딩 함 (POST방식에 적절)
+        // GET방식은 queryString이 uri로 넘어오기 때문에 html에서 <meta charset="UTF-8"> 선언하면 인코딩 문제가 해결됨
         req.setCharacterEncoding("utf-8");
 
         String id = req.getParameter("id");
