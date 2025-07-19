@@ -27,7 +27,11 @@ public class QueryTest2Servlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         // 요청 body에 있는 데이터만 인코딩 함 (POST방식에 적절)
-        // GET방식은 queryString이 uri로 넘어오기 때문에 html에서 <meta charset="UTF-8"> 선언하면 인코딩 문제가 해결됨
+        /*
+            GET방식은 queryString이 uri로 넘어오기 때문에
+            html에서 <meta charset="UTF-8"> 선언
+            또는 WAS에서 URI인코딩 설정 (tomcat은 server.xml에서 URIEncoding=UTF-8 설정 가능)
+         */
         req.setCharacterEncoding("utf-8");
 
         String id = req.getParameter("id");
