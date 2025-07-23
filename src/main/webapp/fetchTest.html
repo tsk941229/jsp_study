@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fetch 테스트</title>
+</head>
+<body>
+    <button id="trigger">전송</button>
+
+
+
+
+</body>
+</html>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+        init();
+    });
+
+    const init = () => {
+
+        const $trigger = document.getElementById("trigger");
+
+        $trigger.addEventListener("click", () => {
+            clickTrigger();
+        });
+
+    }
+
+    const clickTrigger = async () => {
+
+        const data = {
+            name: "태석",
+            birth: "1229"
+        }
+
+        const formData = new FormData();
+        formData.append("name", "태석");
+        formData.append("birth", "1229");
+
+        const url = "/fetchTest";
+
+        const option = {
+            method: "POST",
+            // headers: {
+            //     "Content-Type": "application/json"
+            // },
+            body: formData
+        }
+
+        const response = await (await fetch(url, option)).json();
+
+        console.log(response);
+
+    }
+
+</script>
