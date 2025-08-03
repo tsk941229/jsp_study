@@ -7,5 +7,6 @@
     <tag>
         <name>first</name>
         <tag-class>com.edu.customTag.MycustomTag</tag-class>
+        <body-content>JSP</body-content>
     </tag>
 </taglib>
