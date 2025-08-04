@@ -5,15 +5,26 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 public class MycustomTag extends TagSupport {
 
+    int cnt = 1;
+
+    private String color;
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     public int doStartTag() throws JspException {
 
         System.out.println("시작태그를 만났습니다.");
+        System.out.println("color 속성값 : " + color);
 
         return EVAL_BODY_INCLUDE;
     }
-
-    int cnt = 1;
 
     @Override
     public int doAfterBody() throws JspException {
