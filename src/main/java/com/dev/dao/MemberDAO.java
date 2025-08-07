@@ -87,4 +87,37 @@ public class MemberDAO {
 
     }
 
+    public MemberVO memberSearch(String id) {
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        MemberVO member = null;
+
+        try {
+
+            conn = getConnection();
+            pstmt = conn.prepareStatement("select * from member where id = ?");
+            pstmt.setString(1, id);
+
+            rs = pstmt.executeQuery();
+
+            if(rs.next()) {
+                member = new MemberVO();
+                member.setId(rs.getString("id"));
+                member.setPassword(rs.getString("password"));
+                member.setName(rs.getString("name"));
+                member.setMail(rs.getString("mail"));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(conn, pstmt, rs);
+        }
+
+        return member;
+
+    }
 }
